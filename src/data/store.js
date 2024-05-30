@@ -1,9 +1,8 @@
-import  { reactive } from 'vue';
+import { reactive } from 'vue';
 
-const movie = {
-    movie: [
-
-    ]
-}
-
-const iMieiDati = reactive(oggetto);
+export const store = reactive({
+    movies: [],
+    setMovies(movies) {
+        this.movies = movies;
+    }
+});

@@ -1,13 +1,13 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import axios from 'axios';
+import MovieSearch from './components/MovieSearch.vue';
+
 
 export default {
   components: {
-
+    MovieSearch,
   },
   props: {
-    
+
   },
   data() {
     return {
@@ -15,12 +15,7 @@ export default {
     }
   },
   methods: {
-    getMovies() {
-      axios.get("https://api.themoviedb.org/3/search/movie?api_key=1d03bbfe81394b9ece2878065d077b7c&/3/movie/top_rated?language=en-US&page=1").then(risultato => {
-        this.store.movies = risultato.
-        console.log()
-      })
-    }
+
   },
   mounted() {
 
@@ -29,9 +24,9 @@ export default {
 </script>
 
 <template>
-  
+  <div id="app">
+    <MovieSearch />
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,10 +1,12 @@
 <script>
-import MovieSearch from './components/MovieSearch.vue';
-
+import AppMain from './components/AppMain.vue';
+import axios from 'axios';
+import AppHeader from './components/AppHeader.vue';
 
 export default {
   components: {
-    MovieSearch,
+    AppMain,
+    AppHeader
   },
   props: {
 
@@ -25,7 +27,8 @@ export default {
 
 <template>
   <div id="app">
-    <MovieSearch />
+    <AppHeader />
+    <AppMain />
   </div>
 </template>
 

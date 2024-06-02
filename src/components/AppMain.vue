@@ -6,10 +6,8 @@ export default {
   name: 'AppMain',
   data() {
     return {
-      
       apiMoviesUrl: "https://api.themoviedb.org/3/movie/top_rated?api_key=1d03bbfe81394b9ece2878065d077b7c&query=language=en-US&page=1",
       apiSeriesUrl: "https://api.themoviedb.org/3/discover/tv?api_key=1d03bbfe81394b9ece2878065d077b7c&include_adult=false&language=en-US&page=1&sort_by=vote_average.desc&vote_count.gte=200'",
-
       imagePrefix: "https://image.tmdb.org/t/p/w500",
     };
   },
@@ -51,7 +49,7 @@ export default {
 
       return result;
     }
-    
+
   },
   mounted() {
     axios.get(this.apiMoviesUrl).then(results => {
@@ -86,11 +84,12 @@ export default {
       </p>
       <img v-if="getFlag(film.original_language)" class="flag" :src="getFlag(film.original_language)" />
       <p v-else>{{ film.original_language }}</p>
+      <div class="additional-info">
+        <p><strong>Overview:</strong> {{ film.overview }}</p>
+      </div>
 
     </div>
   </div>
-
-
   <h2 class="film">Serie tv</h2>
   <div class="card">
     <div v-for="serie in series" class="box">
@@ -105,19 +104,21 @@ export default {
       </p>
       <img v-if="getFlag(serie.original_language)" class="flag" :src="getFlag(serie.original_language)" />
       <p v-else>{{ serie.original_language }}</p>
-
+      <div class="additional-info">
+        <p><strong>Overview:</strong> {{ serie.overview }}</p>
+      </div>
     </div>
   </div>
 
-  
+
 
 </template>
 
 <style scoped>
-.film{
-color: red;
-padding: 2rem;
-font-style: oblique;
+.film {
+  color: red;
+  padding: 2rem;
+  font-style: oblique;
 }
 
 .card {
@@ -137,6 +138,8 @@ font-style: oblique;
   margin: 2rem;
   background-color: gray;
   padding: 1rem;
+  position: relative;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 .card .poster {
@@ -145,5 +148,33 @@ font-style: oblique;
 
 .flag {
   width: 1.5rem;
+}
+.box:hover {
+    transform: scale(1.05);
+    background-color: darkgray;
+}
+
+.additional-info {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    z-index: 1;
+    overflow-y: auto;
+}
+
+.box:hover .additional-info {
+    display: flex;
+}
+
+.search-container {
+    margin: 1rem;
 }
 </style>

@@ -10,14 +10,16 @@ export const store = reactive({
     setSeries(series) {
         this.series = series;
     },
-
-    films: [],
-    setFilms(films) {
-        this.films = films;
+    newMovies: [],
+    setNewMovies(newMovies) {
+        this.newMovies = newMovies;
     },
 
-    serie: [],
-    setSerie(serie) {
-        this.serie = serie;
-    }
+    newSeries: [],
+    setNewSeries(newSeries) {
+        this.newSeries = newSeries;
+    },
+
+ 
+    
 });
